@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="EMPLOYEES"
   AliasName="Employees"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <ViewAccessor
     Name="JobsLookupView"
     ViewObjectName="de.adf.community.davol.model.queries.lov.JobsLookupView"
@@ -87,7 +88,6 @@
     TableName="EMPLOYEES"/>
   <Attribute
     Name="JobId"
-    IsNotNull="true"
     Precision="10"
     ColumnName="JOB_ID"
     SQLType="VARCHAR"
@@ -159,7 +159,10 @@
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
-          Value="40"/>
+          Value="30"/>
+        <LABEL
+          ResId="de.adf.community.davol.model.entities.Employees.JobName_LABEL"/>
+        <FORMTYPE/>
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
@@ -282,4 +285,21 @@
       <Item Value="de.adf.community.davol.model.entities.Employees.ManagerId"/>
     </AttrArray>
   </Key>
+  <validation:ExpressionValidationBean
+    Name="JobIdDelayedMandatory"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:MsgIds>
+      <validation:Item
+        Value="JOB_MUST_NOT_BE_EMPTY_"/>
+    </validation:MsgIds>
+    <validation:TransientExpression
+      Name="ValidationRuleScript"
+      trustMode="untrusted"
+      CodeSourceName="EmployeesRow"/>
+  </validation:ExpressionValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="de.adf.community.davol.model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

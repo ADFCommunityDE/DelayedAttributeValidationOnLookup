@@ -3,10 +3,22 @@
 package de.adf.community.davol.model.entities
 
 import oracle.jbo.script.annotation.TransientValueExpression;
+import oracle.jbo.script.annotation.ValidatorExpression;
 
 @TransientValueExpression(attributeName="JobName")
 def JobName_ExpressionScript_Expression()
 {
 JobId != null ? JobsLookupView.getAllRowsInRange().find{it['jobId']==JobId}['jobTitle'] : null
+}
+
+
+@ValidatorExpression(name="JobIdDelayedMandatory")
+def JobIdDelayedMandatory_ValidationRuleScript_ValidationRule()
+{
+if(JobId == null){
+  adf.error.addAttribute('JobName');
+  return false;
+}
+else return true;
 }
 

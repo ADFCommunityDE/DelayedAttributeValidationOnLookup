@@ -132,4 +132,8 @@
     ViewLink="de.adf.community.davol.model.queries.link.EmpManagerFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="de.adf.community.davol.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>
