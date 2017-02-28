@@ -1,0 +1,12 @@
+//Groovy Scripts for de.adf.community.davol.model.entities.Employees
+
+package de.adf.community.davol.model.entities
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="JobName")
+def JobName_ExpressionScript_Expression()
+{
+JobId != null ? JobsLookupView.getAllRowsInRange().find{it['jobId']==JobId}['jobTitle'] : null
+}
+

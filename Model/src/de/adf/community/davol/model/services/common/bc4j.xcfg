@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="de.adf.community.davol.model.services.HRService">
+    <AppModuleConfig name="HRServiceLocal" jbo.project="de.adf.community.davol.model.Model"
+                     ApplicationName="de.adf.community.davol.model.services.HRService" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/HRDS"/>
+      <Security AppModuleJndiName="de.adf.community.davol.model.services.HRService"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="HRServiceShared" jbo.project="de.adf.community.davol.model.Model"
+                     ApplicationName="de.adf.community.davol.model.services.HRService" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/HRDS"/>
+      <Security AppModuleJndiName="de.adf.community.davol.model.services.HRService"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>
