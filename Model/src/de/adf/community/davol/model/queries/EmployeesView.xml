@@ -13,6 +13,29 @@
   CustomQuery="false"
   SelectAllAttributes="false"
   PageIterMode="Full">
+  <ListBinding
+    Name="LOV_JobName"
+    ListVOName="Employees.JobsLookupView"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobTitle"/>
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
   <EntityUsage
     Name="Employees"
     Entity="de.adf.community.davol.model.entities.Employees"/>
@@ -95,7 +118,15 @@
     PrecisionRule="true"
     EntityAttrName="JobName"
     EntityUsage="Employees"
-    AliasName="JOB_NAME"/>
+    AliasName="JOB_NAME"
+    LOVName="LOV_JobName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewLinkAccessor
     Name="EmployeesView"
     ViewLink="de.adf.community.davol.model.queries.link.EmpManagerFkLink"
